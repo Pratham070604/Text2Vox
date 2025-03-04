@@ -1,0 +1,455 @@
+/* General Styles */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #29293a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
+}
+
+.navbar {
+  background-color: #2e2e40;
+  color: white;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  gap: 13rem;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+.navbar .links{
+  border: 2px solid #666;
+  padding: 1rem 2rem;
+  border-radius: 40px;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.navbar a:hover {
+  text-decoration: none;
+  color: #ffc107;
+}
+
+.container {
+  width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    background-color: #1e1e2f;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+header h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 3rem;
+  /* color: #ffc107; */
+  background: linear-gradient(to right, #6600ff 20%, #ffc107 50%, #ff062c 80%);
+    background-clip: text;
+    color: transparent;
+}
+
+/* Layout for Main Content */
+.main-content {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+/* Document Upload Section Styling */
+.form-section {
+  /* flex: 1; */
+  background: #2e2e40;
+  padding: 20px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 40%;
+  height: 100%;
+  position: sticky;
+  top: 8rem;
+}
+
+.form-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffc107;
+  /* background: linear-gradient(to right, #6600ff 2%, #ffc107 8%, #ff062c 10%);
+    background-clip: text;
+    color: transparent; */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* input[type="file"], select {
+  width: 100%;
+  height: 290px;
+  background: #fff;
+  border: 4px solid #444;
+  outline: 3px solid white;
+  color: #1e1e2f;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+input:hover{
+  border-color: #444;
+  outline-color: #ffc107;
+} */
+
+.upload-container {
+  background-color: #f9fbfd;
+  border: 2px dashed #666;
+  z-index: 10;
+  border-radius: 10px;
+  padding: 10px 40px;
+  text-align: center;
+  width: 100%;
+  height: fit-content;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+}
+
+#upload-container.dragover {
+  border: 2px dashed #4a90e2;
+  background-color: #f0f8ff;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+
+.file-upload-input {
+  display: none;
+}
+
+p {
+  margin: 5px 0;
+  color: #7d8fa4;
+}
+
+strong {
+  color: #1e1e2f;
+  font-size: 18px;
+}
+
+.file-types,
+.file-limits {
+  font-size: 12px;
+  color: #7d8fa4;
+  margin-top: 5px;
+}
+
+#file-list {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #333;
+}
+
+.hint-container {
+  line-height: 1rem;
+  margin-top: 20px;
+  padding: 15px;
+  background-color: #1e1e2f;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-family: Arial, sans-serif;
+  color: #333;
+  font-size: 14px;
+  border: 2px solid #2e2e40;
+  outline: 2px solid #ffc107;
+  height: fit-content;
+}
+
+.hint-container h4 {
+  margin-top: 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.hint-container ul {
+  padding-left: 20px;
+  margin-top: 1rem;
+}
+
+.hint-container li {
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+.hint-container strong {
+  color: rgb(121, 175, 250);
+}
+
+.hint-container p{
+  color: #fff;
+  font-weight: bold;
+  margin-top: 2rem;
+  line-height: 1.2rem;
+}
+
+p a{
+  color: rgb(121, 175, 250);
+  text-decoration: none;
+}
+
+.file-box {
+  border: 1px solid #4a90e2;
+  color: #4a90e2;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  background-color: #e6f7ff;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.file-img img{
+  width: 50px;
+  height: 60px;
+}
+
+.file-content{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.file-box {
+  position: relative;
+  /* other styling for the file box */
+}
+
+.remove-file {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #e6f7ff;
+  cursor: pointer;
+  border-top-right-radius: 8px;
+  width: 25px;
+  height: 25px;
+}
+
+/* Audio Section Styling */
+.audio-section {
+    flex: 1;
+    background: #2e2e40;
+    padding: 20px;
+    border-radius: 8px;
+    height: 100%;
+    gap: 1rem;
+}
+
+.audio-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #ffc107;
+}
+
+/* Container for Each Voice Box */
+#audio-containers {
+  display: flex;
+  flex-wrap: wrap;
+  /* gap: 20px; */
+  justify-content: space-between;
+}
+
+.audio-container {
+  width: calc(50% - 10px); /* Ensures two boxes per row */
+  display: flex; /* Keeps .audio-box flexible */
+  justify-content: center; /* Centers content */
+}
+
+/* Styling for Each Voice Box */
+.audio-box {
+  width: 100%; /* Takes full width of .audio-container */
+  position: relative;
+  padding: 15px;
+  border: 2px solid #666;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #1f1f1f;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* transition: transform 0.3s ease, box-shadow 0.3s ease; */
+}
+
+.audio-box:hover {
+  /* transform: translateY(-10px); /* Slight hover effect */
+  /* box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);  */
+  border-color: #ffc107; /* Enhanced shadow */
+}
+
+.audio-box:active {
+  transform: translateY(2px); /* Slightly depressed on click */
+}
+
+.voice-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Styling the avatar */
+.avatar {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.voice-name {
+  font-size: 1.5rem;
+  color: #ffc107;
+}
+
+.voice-meta,
+.voice-model {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+hr {
+  color: #ffc107; /* For browsers that use the `color` property for borders */
+  background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%); /* For modern styling */
+  height: 0.1rem; /* Set thickness */
+  border: none; /* Remove default border styling */
+}
+.voice-audio audio {
+  width: 100%;
+  background-color: #333;
+  border: 2px solid #444;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  color: #be5454;
+}
+
+.track {
+  display: flex;
+  align-items: center;
+  /* margin-top: 20px; */
+  height: 4rem;
+  margin-right: 1rem;
+}
+
+.track img {
+  width: 35px;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.track div {
+  flex: 1;
+}
+
+.audio-box .download-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  opacity: 0.8;
+  transition: opacity 0.3s;
+}
+
+.audio-box .download-icon:hover {
+  opacity: 1;
+}
+
+.audio-box .download-icon img {
+  width: 100%;
+  height: auto;
+}
+
+.download-btn.small-icon {
+  position: absolute; /* Position it relative to the .voice-box container */
+  top: 10px; /* Adjust spacing from the top */
+  right: 10px; /* Adjust spacing from the right */
+  background: none; /* Remove background styling */
+  border: none; /* Remove border styling */
+  cursor: pointer;
+  z-index: 10; /* Ensure it stays above other elements */
+}
+
+.download-btn.small-icon img {
+  width: 30px; /* Adjust the size of the icon */
+  height: 30px;
+  padding: 0.3rem;
+  border: 2px solid #ffc107;
+  border-radius: 10px;
+}
+.download-btn.small-icon img:hover{
+  border: 2px solid #666;
+}
+
+/* Styling the audio player container */
+.audio-player-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+audio {
+  width: 80%;
+  margin-top: 10px;
+  border-radius: 5px;
+}
+
+audio::-webkit-media-controls-panel {
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+}
+
+audio::-webkit-media-controls-play-button {
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 50%;
+}
+
+/* Responsive design adjustments */
+@media (max-width: 768px) {
+  .sub-container {
+    flex-direction: column;
+  }
+
+  .audio-container {
+    width: 100%;
+  }
+
+  .audio-box {
+    width: 90%;
+  }
+
+  audio {
+    width: 100%;
+  }
+}

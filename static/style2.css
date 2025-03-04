@@ -1,0 +1,461 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* transition: all 3s linear 2s; */
+}
+
+body {
+    /* font-family: Arial, sans-serif; */
+    background-color: #29293a;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  /* font-weight: <weight>; */
+  font-style: normal;
+  min-width: 100px; /* Prevent content from overflowing */
+    max-width: 100%;
+    overflow-x: hidden;
+  /* padding: 1rem; */
+}
+
+.navbar {
+    background-color: #2e2e40;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    gap: 13rem;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+.navbar .links{
+    border: 2px solid #666;
+    padding: 1rem 2rem;
+    border-radius: 40px;
+}
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+.navbar a:hover {
+    text-decoration: none;
+    color: #ffc107;
+}
+
+.container {
+    width: 100%;
+    max-width: 100%;
+    padding: 20px;
+    /* background-color: #1e1e2f; */
+    background-color: #1e1e2f;
+    border-radius: 10px;
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); */
+    /* margin: 1rem; */
+}
+
+header h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 3rem;
+    /* color: #ffc107; */
+    background: linear-gradient(to right, #6600ff 20%, #ffc107 50%, #ff062c 80%);
+      background-clip: text;
+      color: transparent;
+}
+
+/* Layout for Main Content */
+.main-content {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Left Section: Text Input */
+.input-section {
+    /* flex: 1; */
+    background: #2e2e40;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 40%;
+    height: 100%;
+    position: sticky;
+    top: 8rem;
+}
+
+.input-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffc107;
+    /* background: linear-gradient(to right, #6600ff 2%, #ffc107 8%, #ff062c 10%);
+      background-clip: text;
+      color: transparent; */
+}
+
+textarea {
+    width: 100%;
+    height: 250px;
+    background: #fff;
+    border: 4px solid #444;
+    outline: 3px solid white;
+    color: #1e1e2f;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    resize: none;
+}
+
+textarea:hover{
+    border-color: #444;
+    outline-color: #ffc107;
+}
+
+.hint-container {
+    line-height: 1rem;
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #1e1e2f;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+    color: #333;
+    font-size: 14px;
+    border: 2px solid #2e2e40;
+    outline: 2px solid #ffc107;
+    height: fit-content;
+}
+
+.hint-container h4 {
+    margin-top: 0;
+    font-size: 18px;
+    color: #fff;
+}
+
+.hint-container ul {
+    padding-left: 20px;
+    margin-top: 1rem;
+}
+
+.hint-container li {
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.hint-container strong {
+    color: rgb(121, 175, 250);
+}
+
+.hint-container p{
+    color: #fff;
+    font-weight: bold;
+    margin-top: 2rem;
+    line-height: 1.2rem;
+}
+
+p a{
+    color: rgb(121, 175, 250);
+    text-decoration: none;
+}
+
+/* Right Section: Generated Voices */
+.output-section {
+    flex: 1;
+    background: #2e2e40;
+    padding: 20px;
+    border-radius: 8px;
+    height: 100%;
+    gap: 1rem;
+}
+
+.output-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #ffc107;
+}
+
+#voices-container{
+    display: flex;
+    flex-wrap: wrap;
+    /* gap: 20px; */
+    justify-content: space-between;
+}
+
+.voice-box {
+    width: calc(50% - 10px); /* Adjust width to fit two per row */
+    position: relative;
+    padding: 15px;
+    border: 2px solid #666;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-color: #1f1f1f;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.voice-box:hover{
+    border-color: #ffc107;
+}
+
+.voice-box:active {
+    transform: translateY(2px); /* Slightly depressed on click */
+  }
+
+.voice-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.voice-name {
+    font-size: 1.5rem;
+    color: #ffc107;
+}
+
+.voice-meta,
+.voice-model {
+    font-size: 0.9rem;
+    color: #aaa;
+}
+/* .voice-audio{
+    background-color: green;
+} */
+hr {
+    color: #ffc107; /* For browsers that use the `color` property for borders */
+    background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%); /* For modern styling */
+    height: 0.1rem; /* Set thickness */
+    border: none; /* Remove default border styling */
+  }
+.voice-audio audio {
+    width: 100%;
+    background-color: #333;
+    border: 2px solid #444;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+    color: #be5454;
+}
+
+.track {
+    display: flex;
+    align-items: center;
+    /* margin-top: 20px; */
+    height: 4rem;
+    margin-right: 1rem;
+}
+
+.track img {
+    width: 35px;
+    margin-right: 1rem;
+    cursor: pointer;
+}
+
+.track div {
+    flex: 1;
+}
+
+.voice-box .download-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.voice-box .download-icon:hover {
+    opacity: 1;
+}
+
+.voice-box .download-icon img {
+    width: 100%;
+    height: auto;
+}
+
+.download-btn.small-icon {
+    position: absolute; /* Position it relative to the .voice-box container */
+    top: 10px; /* Adjust spacing from the top */
+    right: 10px; /* Adjust spacing from the right */
+    background: none; /* Remove background styling */
+    border: none; /* Remove border styling */
+    cursor: pointer;
+    z-index: 10; /* Ensure it stays above other elements */
+}
+
+.download-btn.small-icon img {
+    width: 30px; /* Adjust the size of the icon */
+    height: 30px;
+    padding: 0.3rem;
+    border: 2px solid #ffc107;
+    border-radius: 10px;
+}
+.download-btn.small-icon img:hover{
+    border: 2px solid #666;
+}
+
+/* Customizing the audio controls for Webkit browsers (Chrome, Safari) */
+
+/* Voice Selection Styling */
+input[type="radio"] {
+    display: none; /* Hide default radio buttons */
+}
+
+label {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 2px solid #444;
+    border-radius: 10px;
+    background-color: #333;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+label:hover {
+    background-image: linear-gradient(to right, #F09819 0%, #EDDE5D  51%, #F09819  100%);
+   background-position: right center;
+    transform: scale(1.05);
+}
+
+label input[type="radio"]:checked + span {
+    border-color: #ffc107;
+}
+
+label span {
+    padding-left: 10px;
+    font-weight: 600;
+}
+
+input[type="radio"]:checked + span::before {
+    content: "✓";
+    color: #fff;
+    margin-right: 10px;
+}
+
+h3 {
+    line-height: 32px;
+    margin-bottom: 2px;
+}
+
+h3 + div {
+    margin-top: 5px;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+@media screen and (max-width: 1024px) {
+    .navbar {
+        gap: 2rem;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .main-content {
+        flex-direction: column;
+    }
+    
+    .input-section, .output-section {
+        width: 100%;
+        position: static;
+    }
+    
+    .voice-box {
+        width: calc(50% - 10px);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .voice-box {
+        width: 100%;
+    }
+}
+
+/* Small Screens (Below 600px) */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .voice-box {
+        padding: 8px;
+        /* width: 100%; */
+    }
+
+    .voice-name{
+        font-size: 18px;
+    }
+
+    .input-section, .output-section {
+        padding: 15px;
+    }
+
+    .track {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .track img {
+        width: 30px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 100px) {
+    body {
+        font-size: 10px;
+    }
+    
+    .navbar {
+        flex-direction: column;
+        gap: 5px;
+        padding: 5px;
+    }
+    
+    .input-section, .output-section {
+        padding: 5px;
+    }
+    
+    .voice-box {
+        padding: 5px;
+        font-size: 8px;
+    }
+    .voice-name{
+        font-size: 6px;
+    }
+}

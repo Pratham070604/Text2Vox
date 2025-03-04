@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}" id="flash-message">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <script>
+    setTimeout(function() {
+      let flashMessage = document.getElementById('flash-message');
+      if (flashMessage) {
+        flashMessage.style.transition = "opacity 0.5s ease";
+        flashMessage.style.opacity = "0";
+        setTimeout(() => flashMessage.remove(), 500); // Remove after fade-out
+      }
+      // Redirect to login page after message disappears
+      setTimeout(() => window.location.href = "{{ url_for('login') }}", 500);
+    }, 3000);
+  </script>
+{% endblock %}

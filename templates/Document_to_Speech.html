@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document to Speech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Condensed:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style3.css') }}">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}"><img src="/static/images/logo.png" alt="" width="200px"></a>
+        </div>
+        <div class="links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('Text_to_Speech') }}">Text To Speech</a>
+            <a href="{{ url_for('Document_to_Speech') }}">Document to Speech</a>
+            <a href="{{ url_for('Storymaker') }}">Story Maker</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Document-to-Speech Playground</h1>
+        </header>
+        <main class="main-content">
+            <div class="form-section">
+                <label for="file-upload">
+                    <h2>Upload Your Document</h2>
+                </label>
+                <div class="upload-container" id="drop-area">
+                    <input type="file" id="file-upload" class="file-upload-input" style="display: none;" multiple />
+                    <img src="../static/images/file-upload.svg" alt="Upload file" height="50px" width="50px">
+                    <p><strong>Click to upload</strong></p>
+                    <p>or drag and drop your file here</p>
+                    <p class="file-types">.docx, .pptx, .pdf, .txt, .html</p>
+                    <p class="file-limits">Max file size: 100MB</p>
+
+                    <div id="file-list"></div>
+                </div>
+                <div id="hint" class="hint-container">
+                    <h4>How to use this playground:</h4>
+                    <ul>
+                        <li><strong>Step 1:</strong> Enter the text you want to convert to speech in the text box above.</li>
+                        <li><strong>Step 2:</strong> Choose a voice model from the list below.</li>
+                        <li><strong>Step 3:</strong> Click on the model directly to create your audio, and wait for few seconds.</li>
+                        <li><strong>Step 4:</strong> Use the play/pause button to listen to the generated speech.</li>
+                        <li><strong>Step 5:</strong> Download the audio using the download button if needed.</li>
+                    </ul>
+                    <!-- <p>We are improving the Playground and appreciate your opinion. Please let us know how we can improve.
+                        <a href="#">Send FeedBack</a>
+                    </p> -->
+                </div>
+            </div>
+
+            <div class="audio-section">
+                <h2>Generated Voices</h2>
+                <div id="audio-containers">
+                    {% for voice in voices %}
+                    <div class="audio-container" id="audio-container-{{ voice['model'] }}">
+                        <div class="audio-box voice-selector" data-voice="{{ voice['model'] }}">
+                            <div class="voice-header">
+                                <img src="{{ url_for('static', filename=voice.avatar) }}" alt="{{ voice.name }} Avatar" class="avatar">
+                                <div>
+                                    <h3 class="voice-name">{{ voice.name }}</h3>
+                                    <p class="voice-meta">{{ voice.details }}</p>
+                                    <p class="voice-model">Model: {{ voice.model }}</p>
+                                </div>
+                            </div>
+                            <a id="Downloadbtn-{{ voice.model }}" class="download-btn small-icon" href="#" target="_blank">
+                                <img src="/static/images/download.svg" alt="Download Icon">
+                            </a>
+                            <hr>
+                            <div class="voice-audio">
+                                <div class="track">
+                                    <img src="/static/images/play.svg" alt="Play Button" id="Playbtn-{{ voice.model }}" class="play-btn">
+                                    <div id="waveform-{{ voice.model }}" class="waveform-container wrap"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script3.js') }}"></script>
+</body>
+</html>

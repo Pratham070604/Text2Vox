@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text2Vox</title>
+    <link rel="icon" type="image/x-icon" href="/static/images/Tlogo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Condensed:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="logo">
+                <a href="{{ url_for('index') }}"><img src="/static/images/logo.png" alt="" width="200px"></a>
+            </div>
+            <div class="links">
+                <a href="{{ url_for('index') }}">Home</a>
+                <div class="dropdown">
+                    <button class="dropbtn">Services<img src="../static/images/down-arrow.png" alt="Arrow" class="arrow-icon" width="20px"></button>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('Text_to_Speech') }}">Text To Speech</a>
+                        <a href="{{ url_for('Document_to_Speech') }}">Document to Speech</a>
+                        <a href="{{ url_for('Storymaker') }}">Story Maker</a>
+                    </div>
+                </div>
+                <a href="{{ url_for('about') }}">About</a>
+                <a href="{{ url_for('contact') }}">Contact</a>
+                <!-- <a href="{{ url_for('logout') }}">Logout</a> -->
+            </div>
+            <div class="logins">
+                {% if user %}
+                    <span class="username">Welcome, {{ user }}</span>
+                    <a href="{{ url_for('logout') }}" class="logout-btn">Logout</a>
+                {% else %}
+                    <button class="login"><a href="{{ url_for('login') }}">Log-in</a></button>
+                    <button class="Signup"><a href="{{ url_for('signup') }}">Signup</a></button>
+                {% endif %}
+            </div>            
+            <button id="dark-mode-toggle">🌙</button>
+        </div>
+
+        <!-- Hero Section -->
+        <div class="main-section">
+            <div class="sub-main-section">
+                <div class="main-section-left">
+                    <h1>Text2Vox</h1>
+                    <p>Convert text into natural-sounding speech in real time with AI-powered technology. Supports multiple languages, voice models, and more!</p>
+                    <a href="{{ url_for('index') }}" class="cta-button">Try Now</a>
+                </div>
+                <div class="main-section-right">
+                    <img src="/static/images/visual-img.png" alt="">
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="section2">
+        <div class="features">
+            <h2>Key Features</h2>
+            <div class="sub-features">
+                <div class="feature" id="feat1">
+                    <img src="../static/images/audio.png" alt="" width="82px">
+                    <h3>Instant Text-to-Speech Conversion</h3>
+                    <p>Converts text into high-quality, natural-sounding speech in real-time.</p>
+                </div>
+                <div class="feature" id="feat2">
+                    <img src="../static/images/document.png" alt="" width="82px">
+                    <h3>Instant Document-to-Speech</h3>
+                    <p>Convert text, PDFs, Html, PPTx and DOCX into natural-sounding speech in real-time.</p>
+                </div>
+                <div class="feature" id="feat3">
+                    <img src="../static/images/chat.png" alt="" width="82px">
+                    <h3>Interactive Story Maker</h3>
+                    <p>Create, edit, and narrate multi-character stories with unique AI voices.</p>
+                </div>
+                <div class="feature" id="feat4">
+                    <img src="../static/images/languages.png" alt="" width="82px">
+                    <h3>Multi-Language Support</h3>
+                    <p>Diverse AI-generated voices with multilingual options.</p>
+                </div>
+                <div class="feature" id="feat5">
+                    <img src="../static/images/voice.png" alt="" width="82px">
+                    <h3>More than 20 voice accents</h3>
+                    <p>This feature allows users to choose from more than 50 different voice accents to apply to the text converted to voice.</p>
+                </div>
+                <div class="feature" id="feat6">
+                    <img src="../static/images/lock-person-profile-user.svg" alt="" width="82px">
+                    <h3>User Authentication & Security</h3>
+                    <p>Secure login, encrypted passwords, and session-based authentication.</p>
+                </div>
+                <div class="feature" id="feat7">
+                    <img src="../static/images/cloud-upload-svgrepo-com.png" alt="" width="82px">
+                    <h3>File Upload, Storage & Management</h3>
+                    <p>Upload and manage documents/audio files (up to 50MB).</p>
+                </div>
+                <div class="feature" id="feat8">
+                    <img src="../static/images/mp3-audio-file.png" alt="" width="82px">
+                    <h3>Suppots MP3 audio formats</h3>
+                    <p>This allows users to save resulting file in MP3 audio format.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- Testimonials Carousel -->
+        <!-- Testimonials Carousel -->
+<div class="testimonial-carousel">
+    <div class="sub-testimonial">
+        <div class="testimonial-left">
+            <h2>What Our Users Say</h2>
+            <div class="shift">
+            <button id="prevButton">←</button>
+            <button id="nextButton">→</button>
+            </div>
+        </div>
+        <div class="testimonial-right">
+            <div class="carousel-wrapper">
+                <div class="carousel">
+                    <p class="testimonial-text">"This platform has completely changed the way I work. The user-friendly interface and amazing features make it a must-have. I highly recommend it to anyone looking for efficiency and ease of use."</p>
+                    <h3 class="testimonial-author">- John Doe</h3>
+                </div>
+                <div class="carousel">
+                    <p class="testimonial-text">"I was skeptical at first, but after using this service, I can confidently say it’s one of the best decisions I’ve made. The support team is responsive, and the functionality is outstanding."</p>
+                    <h3 class="testimonial-author">- Jane Smith</h3>
+                </div>
+                <div class="carousel">
+                    <p class="testimonial-text">"From the moment I started using this, I noticed a significant improvement in my workflow. The intuitive design and innovative features are exactly what I needed to stay productive and focused."</p>
+                    <h3 class="testimonial-author">- Alex Brown</h3>
+                </div>
+                <div class="carousel">
+                    <p class="testimonial-text">"I’ve tried many similar products, but nothing compares to this. The seamless experience, attention to detail, and reliability make it stand out. I would highly recommend it to anyone!"</p>
+                    <h3 class="testimonial-author">- Emily Davis</h3>
+                </div>
+                <div class="carousel">
+                    <p class="testimonial-text">"One of the best investments I’ve made in a long time. It not only simplifies tasks but also enhances productivity. The developers clearly put a lot of thought into making it user-friendly."</p>
+                    <h3 class="testimonial-author">- Michael Brown</h3>
+                </div>
+                <div class="carousel">
+                    <p class="testimonial-text">"This platform exceeded my expectations. The ease of use, combined with its powerful features, has made my daily tasks so much simpler. I would definitely recommend it to professionals and beginners alike."</p>
+                    <h3 class="testimonial-author">- Olivia Martinez</h3>
+                </div>
+                <div class="carousel">
+                    <p class="testimonial-text">"I’ve been using this for months now, and I must say it keeps getting better. Regular updates, excellent customer support, and a smooth user experience make it worth every penny."</p>
+                    <h3 class="testimonial-author">- William Anderson</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <!-- FAQ Section -->
+<div class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <div class="details">
+    <div class="details-left">
+    <details>
+        <summary>
+            <span class="faq-question"> What is Text2Vox?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">Text2Vox is an AI-powered text-to-speech web application that converts written text into realistic speech in multiple voices and languages.</p>
+    </details>
+    <details>
+        <summary>
+            <span class="faq-question">How does Text2Vox work?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">You simply enter your text, choose a voice, and click "Generate." The app processes your text in real-time and provides a downloadable audio file.</p>
+    </details>
+    <details>
+        <summary>
+            <span class="faq-question">What voice models are available?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">Text2Vox supports multiple AI voices, each with unique tones and accents. More voices will be added in future updates.</p>
+    </details>
+    <details>
+        <summary>
+            <span class="faq-question">Can I download the generated speech?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">Yes! Once the audio is generated, you can download it in a supported format like MP3.</p>
+    </details>
+    <details>
+        <summary>
+            <span class="faq-question">Does Text2Vox support multiple languages?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">Yes, the app supports various languages for speech synthesis, allowing you to generate speech in different accents.</p>
+    </details>
+</div>
+<div class="details-right">
+    <details>
+        <summary>
+            <span class="faq-question">Can I convert PDFs or documents into speech?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">Yes, Text2Vox allows you to upload documents (PDFs, text files, etc.) and convert their content into speech.</p>
+    </details>
+    <details>
+        <summary>
+            <span class="faq-question">Is there a character limit for text input?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">Currently, there may be a limit on text length, depending on system performance and voice synthesis capabilities.</p>
+    </details>
+    <details>
+        <summary>
+            <span class="faq-question">Can I edit dialogues in Story Maker mode?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">Yes! The Story Maker feature allows you to add multiple characters with individual dialogues and edit them before generating the full story.</p>
+    </details>
+    <details>
+        <summary>
+            <span class="faq-question">Do I need an internet connection to use Text2Vox?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">Yes, since the app uses real-time AI processing, an active internet connection is required.</p>
+    </details>
+    <details>
+        <summary>
+            <span class="faq-question">Will more features be added in the future?</span>
+            <span class="icon"></span>
+        </summary>
+        <p class="faq-answer">Yes! Future updates will include more voice models, better customization, enhanced playback options, and improved document support.</p>
+    </details>
+    </div>
+</div>
+</div>
+
+<div class="footer">
+    <div class="footer-form">
+        <!-- Newsletter Signup -->
+        <div class="newsletter">
+            <!-- <h2>Stay Updated</h2> -->
+            <p>Subscribe for the latest updates and features.</p>
+            <form action="/subscribe" method="POST" class="input-form">
+            <input type="email" id="email" placeholder="Enter your email" required>
+            <button>Subscribe</button>
+            </form>
+        </div>
+        <div class="footer-widget">
+            <div class="widget-menu">
+                <h3 class="title">Home</h3>
+                <a href="{{ url_for('index') }}">Home</a>
+            </div>
+            <div class="widget-menu">
+                <h3 class="title">Product</h3>
+                <a href="{{ url_for('Text_to_Speech') }}">Text To Speech</a>
+                <a href="{{ url_for('Document_to_Speech') }}">Document to Speech</a>
+                <a href="{{ url_for('Storymaker') }}">Story Maker</a>
+            </div>
+            <div class="widget-menu">
+                <h3 class="title">Contact</h3>
+                <a href="{{ url_for('index') }}">Home</a>
+            </div>
+        </div>
+    </div>
+
+        <!-- Social Media Links -->
+        <div class="social-media">
+            <p>&copy;2025 TTS all rights reserved.</p>
+            <div class="links">
+            <a href="#"><img src="../static/images/x_logo.png" alt="" width="20px"></a>
+            <a href="#"><img src="../static/images/linkedin.svg" alt="" width="20px"></a>
+            <a href="#"><img src="../static/images/instagram.svg" alt="" width="20px"></a>
+            </div>
+        </div>
+    </div>
+</dv>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Speech Playground</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style2.css') }}">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}"><img src="/static/images/logo.png" alt="" width="200px"></a>
+        </div>
+        <div class="links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('Text_to_Speech') }}">Text To Speech</a>
+            <a href="{{ url_for('Document_to_Speech') }}">Document to Speech</a>
+            <a href="{{ url_for('Storymaker') }}">Story Maker</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Text-to-Speech Playground</h1>
+        </header>
+        <main class="main-content">
+            <section class="input-section">
+                <h2>Text Input</h2>
+                <textarea id="text-input" placeholder="Enter your text here...">This is the default text in the textarea.</textarea>
+
+                <div id="hint" class="hint-container">
+                    <h4>How to use this playground:</h4>
+                    <ul>
+                        <li><strong>Step 1:</strong> Enter the text you want to convert to speech in the text box above.</li>
+                        <li><strong>Step 2:</strong> Choose a voice model from the list below.</li>
+                        <li><strong>Step 3:</strong> Click on the model directly to create your audio, and wait for few seconds.</li>
+                        <li><strong>Step 4:</strong> Use the play/pause button to listen to the generated speech.</li>
+                        <li><strong>Step 5:</strong> Download the audio using the download button if needed.</li>
+                    </ul>
+                    <!-- <p>We are improving the Playground and appreciate your opinion. Please let us know how we can improve.
+                        <a href="#">Send FeedBack</a>
+                    </p> -->
+                </div>
+            </section>
+
+            <section class="output-section">
+                <h2>Generated Voices</h2>
+                <div id="voices-container">
+                    {% for voice in voices %}
+                    <div class="voice-box" data-model="{{ voice.model }}">
+                        <div class="voice-header">
+                            <img src="{{ url_for('static', filename=voice.avatar) }}" alt="{{ voice.name }} Avatar" class="avatar">
+                            <div>
+                                <h3 class="voice-name">{{ voice.name }}</h3>
+                                <p class="voice-meta">{{ voice.details }}</p>
+                                <p class="voice-model">Model: {{ voice.model }}</p>
+                            </div>
+                        </div>
+                        <a id="Downloadbtn-{{ voice.name }}" class="download-btn small-icon" href="#" target="_blank">
+                            <img src="/static/images/download.svg" alt="Download Icon">
+                        </a>
+                        <hr>
+                        <div class="voice-audio">
+                            <div class="track">
+                                <img src="/static/images/play.svg" alt="Play Button" id="Playbtn-{{ voice.name }}" class="play-btn">
+                                <div id="waveform-{{ voice.name }}" class="wrap"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>                
+            </section>
+        </main>
+    </div>
+
+    <!-- Link to external JavaScript file -->
+    <script src="{{ url_for('static', filename='script2.js') }}"></script>
+</body>
+</html>

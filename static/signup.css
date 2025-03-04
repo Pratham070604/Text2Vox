@@ -1,0 +1,173 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Centering the form */
+body {
+    height: 100vh;
+    background: linear-gradient(135deg, #ffc107, #d2a101);
+    padding: 20px;
+}
+
+.navbar{
+    display: flex;
+    gap: 4px;
+}
+.navbar img{
+    width: 20px;
+}
+.navbar a{
+    color: #fff;
+    font-size: 20px;
+}
+.navbar a:hover{
+    text-decoration: none;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 94%;
+}
+
+/* Form container */
+.container {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    width: fit-content;
+    max-width: fit-content;
+    text-align: center;
+    display: flex;
+    border-right: 3px solid #666;
+    border-bottom: 3px solid #666;
+    border-left: 3px solid #222;
+    border-top: 3px solid #222;
+    /* flex-direction: ; */
+}
+
+.container .sub-container-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+.sub-container-2 form{
+    width: 100%;
+}
+
+/* Title styling */
+h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 30px;
+    /* background: linear-gradient(to right, #6600ff 20%, #ffc107 50%, #ff062c 80%);
+      background-clip: text;
+      color: transparent; */
+}
+
+.alert {
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.alert.success {
+    color: green;
+}
+
+.alert.danger {
+    color: red;
+}
+
+
+/* Input group */
+.input-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+/* Input field */
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border 0.3s ease-in-out;
+}
+
+/* Focus effect */
+.input-group input:focus {
+    border-color: #ffc107;
+    outline: none;
+}
+
+/* Password toggle button */
+.toggle-btn {
+    position: absolute;
+    right: 10px;
+    top: 55%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+}
+
+/* Button styling */
+.btn {
+    width: 100%;
+    padding: 12px;
+    background: #ffc107;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #d2a101;
+}
+
+/* Bottom text */
+p {
+    margin-top: 1rem;
+    font-size: 14px;
+    color: #333;
+}
+
+/* Links */
+a {
+    color: #ffc107;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+    }
+    .input-group input {
+        padding: 10px;
+    }
+    .btn {
+        padding: 10px;
+    }
+}

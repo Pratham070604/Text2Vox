@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='contact.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}"><img src="/static/images/logo.png" alt="" width="200px"></a>
+        </div>
+        <div class="links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('Text_to_Speech') }}">Text To Speech</a>
+            <a href="{{ url_for('Document_to_Speech') }}">Document to Speech</a>
+            <a href="{{ url_for('Storymaker') }}">Story Maker</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Contact Us</h1>
+        </header>
+        <section class="contact-container">
+            <h2>Get in Touch</h2>
+            <p>If you have any questions, feedback, or need support, feel free to reach out to us!</p>
+
+            <div class="contact-info">
+                <div class="info-box">
+                    <h3>Email</h3>
+                    <p>support@text2vox.com</p>
+                </div>
+                <div class="info-box">
+                    <h3>Phone</h3>
+                    <p>+1 (234) 567-890</p>
+                </div>
+                <div class="info-box">
+                    <h3>Address</h3>
+                    <p>123 AI Street, Tech City, TX 75001</p>
+                </div>
+            </div>
+
+            <form action="{{ url_for('contact') }}" method="post" class="contact-form">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2025 Text2Vox. All rights reserved.</p>
+    </footer>
+</body>
+</html>

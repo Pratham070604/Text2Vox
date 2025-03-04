@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Story Maker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Condensed:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style4.css') }}">
+    <script src="https://unpkg.com/wavesurfer.js"></script>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}"><img src="/static/images/logo.png" alt="" width="200px"></a>
+        </div>
+        <div class="links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('Text_to_Speech') }}">Text To Speech</a>
+            <a href="{{ url_for('Document_to_Speech') }}">Document to Speech</a>
+            <a href="{{ url_for('Storymaker') }}">Story Maker</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Story Maker</h1>
+        </header>
+        
+        <h2 class="dialogue" id="dialogue-head"></h2>
+        <ul id="dialogueList"></ul>
+
+        <div id="dialogueContainer">
+            <input type="text" id="storyTitle" placeholder="Enter Story Title"><br><br>
+            <input type="text" id="character" placeholder="Character Name"><br><br>
+            <textarea id="dialogue" placeholder="Enter dialogue..." rows="4" cols="50"></textarea><br>
+            
+            <h3>Select Character Voice:</h3>
+            <div class="select-voice">
+            <div id="voice">
+                <img id="voice-avatar" src="" alt="Selected Voice" width="50" height="50">
+                <span id="voice-name">Voice</span>
+            </div>
+            <button id="openVoiceModal">Choose Voice</button>
+            </div>
+        </div>
+
+        <button onclick="combineDialogues()" class="buttons">Create Story</button>
+        <button onclick="addDialogue()" class="buttons">Add Dialogue</button>
+
+        <div id="audioContainer" class="audio-player">
+            <audio id="storyAudio" controls style="display: none;"></audio>
+            <a id="downloadLink" style="display: none;">
+                <img src="../static/images/download.svg" alt="Download" width="30px">
+            </a>
+        </div>
+    </div>
+
+    <!-- Voice Selection Modal -->
+    <div id="voiceModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeVoiceModal()">&times;</span>
+            <h2>Select a Voice</h2>
+            <div id="voiceList" class="voice-grid">
+                <!-- Dynamic voice list will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script4.js') }}"></script>
+</body>
+</html>

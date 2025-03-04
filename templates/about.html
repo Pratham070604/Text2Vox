@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="icon" type="image/x-icon" href="/edge-tts4/static/images/Tlogo.jpg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="{{ url_for('index') }}"><img src="/static/images/logo.png" alt="" width="200px"></a>
+        </div>
+        <div class="links">
+            <a href="{{ url_for('index') }}">Home</a>
+            <a href="{{ url_for('Text_to_Speech') }}">Text To Speech</a>
+            <a href="{{ url_for('Document_to_Speech') }}">Document to Speech</a>
+            <a href="{{ url_for('Storymaker') }}">Story Maker</a>
+            <a href="{{ url_for('about') }}">About</a>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </div>
+    </div>
+    <div class="container">
+    <main>
+        <!-- <header>
+            <h1>About Us</h1>
+        </header> -->
+        <section class="section-1">
+        <div class="left">
+            <h2>Welcome to Text2Vox</h2>
+            <p>Text2Vox is a powerful AI-driven text-to-speech platform that converts text, documents, and multi-character dialogues into high-quality speech.</p>
+        </div>
+        <div class="right">
+            <img src="../static/images/section-1.jpg" alt="Ai Speech image">
+        </div>
+        </section>
+        <section class="section-2">
+            <h2>Our Mission</h2>
+            <div class="sub-section-2">
+                <div class="left">
+                <h4>Empower Dreams, Feuling Success</h4>
+                <p>Our goal is to provide users with a seamless text-to-speech experience by making AI-generated voices more natural and expressive. We aim to enhance accessibility for individuals with visual impairments or reading difficulties.</p>
+            </div>
+                <img src="../static/images/section-2.webp" alt="New Idea">
+            </div>
+        </section>
+        <section class="section-3">
+            <div class="section3-left">
+                <h2>Service Provider like</h2>
+                <p>Text2Vox offers AI-driven text-to-speech services similar to Google Text-to-Speech, Amazon Polly, Microsoft Azure Speech, IBM Watson Text-to-Speech, and Deepgram, providing high-quality, natural-sounding voices for various applications. It supports real-time conversion, multilingual voices, voice customization, and downloadable audio, making it ideal for content creation, accessibility, and business applications.</p>
+                <img src="../static/images/servive-provider.jpg" alt="">
+            </div>
+            <div class="section3-right">
+                <h2>Why Choose Text2Vox?</h2>
+                <ul>
+                    <li>Real-Time Speech Generation – Instantly converts text into lifelike speech.</li>
+                    <li>High-Quality AI Voices – Multiple natural-sounding voice models across various languages.</li>
+                    <li>Custom Voice Training – Personalize AI voices to match brand or character needs.</li>
+                    <li>Multilingual Support – Supports multiple languages and accents for global reach.</li>
+                    <li>User-Friendly Interface – Intuitive design for seamless text-to-speech conversion.</li>
+                    <li>Downloadable Audio Files – Easily save and use generated speech anywhere.</li>
+                    <li>Use Case Versatility – Ideal for content creation, audiobooks, accessibility, and more.</li>
+                    <li>Scalable & Efficient – Fast processing, ensuring smooth performance for any workload.</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section class="section-5">
+            <!-- <h2>Contact Us</h2> -->
+            <div class="sub-section-5">
+                <div class="Contact">
+                <!-- <p>If you have any questions or suggestions, feel free to reach out to us.</p> -->
+                <p>Email: support@text2vox.com</p>
+                <h4>Follow us:</h4>
+                <p class="social-media">
+                <a href="#"><img src="../static/images/instagram.svg" alt=""></a>
+                <a href="#"><img src="../static/images/facebook.svg" alt=""></a>
+                <a href="#"><img src="../static/images/linkedin.svg" alt=""></a>
+                <a href="#"><img src="../static/images/x_logo.png" alt=""></a>
+                </p>
+                </div>
+                <div class="company">
+                    <div class="company-1">
+                    <h4>Company</h4>
+                    <a href="{{ url_for('index') }}">Home</a>
+                    <a href="{{ url_for('Text_to_Speech') }}">Text To Speech</a>
+                    <a href="{{ url_for('Document_to_Speech') }}">Document to Speech</a>
+                    <a href="{{ url_for('Storymaker') }}">Story Maker</a>
+                    <a href="{{ url_for('about') }}">About</a>
+                    <a href="{{ url_for('contact') }}">Contact</a>
+                    </div>
+                    <div class="company-1">
+                        <h4>Legal</h4>
+                        <a href="#">Privacy</a>
+                        <a href="#">Terms</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Text2Vox. All rights reserved.</p>
+    </footer>
+</div>
+</body>
+</html>
