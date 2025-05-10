@@ -125,7 +125,8 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 ## 👨‍💻 Author
 
 **Prathmesh Parab**
-Final Year BSc IT, Kirti College␣␣
+Final Year BSc IT, 
+Kirti College
 GitHub: [Pratham070604]((https://github.com/Pratham070604))
 
 ---
