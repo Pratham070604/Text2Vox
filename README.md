@@ -112,8 +112,8 @@ http://127.0.0.1:5000
 - ✅ Real-time document-to-speech conversion
 ![Realtime DTS Demo](static/images/UI3.png)
 
-- ✅ Multiple voice models with avatars
-  ![Story Mode](static/images/UI4.png)
+<!--- ✅ Multiple voice models with avatars
+  ![Story Mode](static/images/UI4.png)-->
 
 
 ## 🤝 Contributing
