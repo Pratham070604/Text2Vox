@@ -126,13 +126,7 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 **Prathmesh Parab**
 Final Year BSc IT, Kirti College
-GitHub: [Pratham070604]((https://github.com/Pratham070604))
+GitHub: [@your-username]([https://github.com/your-username](https://github.com/Pratham070604))
 
 ---
 
-```
-
----
-
-Let me know if you'd like the banner image, icons, or a version with GitHub-flavored Markdown badges.
-```
