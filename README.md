@@ -106,13 +106,16 @@ http://127.0.0.1:5000
 
 ## 📸 Screenshots
 
-- ✅ Real-time text-to-speech conversion  
+- ✅ Real-time text-to-speech conversion
+- 
   ![Realtime TTS Demo](static/images/UI2.png)
 
-- ✅ Real-time document-to-speech conversion  
+- ✅ Real-time document-to-speech conversion
+- 
 ![Realtime DTS Demo](static/images/UI3.png)
 
-- ✅ Multiple voice models with avatars  
+- ✅ Multiple voice models with avatars
+- 
   ![Story Mode](static/images/UI4.png)
 
 
