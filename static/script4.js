@@ -1,23 +1,23 @@
 let audioFiles = []; // Keeps track of audio files
 
 const voices = [
-    { name: "Eloise", gender: "Female", category: "General", model: "fr-FR-EloiseNeural", avatar: "../static/avatar/female-avatar1.avif" },
-    { name: "Henri", gender: "Male", category: "General", model: "fr-FR-HenriNeural", avatar: "../static/avatar/male-avatar1.avif" },
-    { name: "Madhur", gender: "Male", category: "General", model: "hi-IN-MadhurNeural", avatar: "../static/avatar/male-avatar2.avif" },
-    { name: "Swara", gender: "Female", category: "General", model: "hi-IN-SwaraNeural", avatar: "../static/avatar/female-avatar2.avif" },
-    { name: "Aarohi", gender: "Female", category: "General", model: "mr-IN-AarohiNeural", avatar: "../static/avatar/female-avatar3.avif" },
-    { name: "Manohar", gender: "Male", category: "General", model: "mr-IN-ManoharNeural", avatar: "../static/avatar/male-avatar3.avif" },
-    { name: "Pallavi", gender: "Female", category: "General", model: "ta-IN-PallaviNeural", avatar: "../static/avatar/female-avatar4.jpg" },
-    { name: "Valluvar", gender: "Male", category: "General", model: "ta-IN-ValluvarNeural", avatar: "../static/avatar/male-avatar4.avif" },
-    { name: "Xiaoxiao", gender: "Female", category: "News, Novel", model: "zh-CN-XiaoxiaoNeural", avatar: "../static/avatar/female-avatar5.avif" },
-    { name: "Xiaoyi", gender: "Female", category: "Cartoon, Novel", model: "zh-CN-XiaoyiNeural", avatar: "../static/avatar/female-avatar6.avif" },
-    { name: "Yunjian", gender: "Male", category: "Sports, Novel", model: "zh-CN-YunjianNeural", avatar: "../static/avatar/male-avatar5.avif" },
-    { name: "Yunxi", gender: "Male", category: "Novel", model: "zh-CN-YunxiNeural", avatar: "../static/avatar/male-avatar6.avif" },
-    { name: "Yunxia", gender: "Male", category: "Cartoon, Novel", model: "zh-CN-YunxiaNeural", avatar: "../static/avatar/male-avatar7.avif" },
-    { name: "Yunyang", gender: "Male", category: "News", model: "zh-CN-YunyangNeural", avatar: "../static/avatar/male-avatar8.jpg" },
-    { name: "Liaoning Xiaobei", gender: "Female", category: "Dialect", model: "zh-CN-liaoning-XiaobeiNeural", avatar: "../static/avatar/female-avatar7.jpg" },
-    { name: "Shaanxi Xiaoni", gender: "Female", category: "Dialect", model: "zh-CN-shaanxi-XiaoniNeural", avatar: "../static/avatar/female-avatar8.avif" }
-];
+        { name: "Brain", details: "Male, Conversation, Copilot, Approachable, Casual, Sincere", model: "en-US-BrianMultilingualNeural", avatar: "../static/avatar/male-avatar8.jpg" },
+        { name: "Emma", details: "Female, Conversation, Copilot, Cheerful, Clear, Conversational", model: "en-US-EmmaMultilingualNeural", avatar: "../static/avatar/female-avatar7.jpg" },
+        { name: "Eric", details: "Male, News, Novel", model: "en-US-EricNeural", avatar: "../static/avatar/male-avatar6.avif" },
+        { name: "Ana", details: "Female, Cartoon, Conversation, Cute", model: "en-US-AnaNeural", avatar: "../static/avatar/female-avatar5.avif" },
+        { name: "Madhur", details: "Male, General", model: "hi-IN-MadhurNeural", avatar: "../static/avatar/male-avatar2.avif" },
+        { name: "Swara", details: "Female, General", model: "hi-IN-SwaraNeural", avatar: "../static/avatar/female-avatar2.avif" },
+        { name: "Manohar", details: "Male, General", model: "mr-IN-ManoharNeural", avatar: "../static/avatar/male-avatar3.avif" },
+        { name: "Aarohi", details: "Female, General", model: "mr-IN-AarohiNeural", avatar: "../static/avatar/female-avatar3.avif" },
+        { name: "Henri", details: "Male, General", model: "fr-FR-HenriNeural", avatar: "../static/avatar/male-avatar1.avif" },
+        { name: "Eloise", details: "Female, General", model: "fr-FR-EloiseNeural", avatar: "../static/avatar/female-avatar1.avif" },
+        { name: "Valluvar", details: "Male, General", model: "ta-IN-ValluvarNeural", avatar: "../static/avatar/male-avatar4.avif" },
+        { name: "Pallavi", details: "Female, General", model: "ta-IN-PallaviNeural", avatar: "../static/avatar/female-avatar4.jpg" },
+        { name: "Alvaro", details: "Male, General, Friendly, Positive", model: "es-ES-AlvaroNeural", avatar: "../static/avatar/male-avatar5.avif" },
+        { name: "Elvira", details: "Female, General, Friendly, Positive", model: "es-ES-ElviraNeural", avatar: "../static/avatar/female-avatar6.avif" },
+        { name: "Yunxia", details: "Male, Cartoon, Novel", model: "zh-CN-YunxiaNeural", avatar: "../static/avatar/male-avatar7.avif" },
+        { name: "YunyangNeural", details: "Female, Cartoon, Novel, Lively", model: "zh-CN-XiaoyiNeural", avatar: "../static/avatar/female-avatar8.avif" }
+    ];
 
 document.addEventListener("DOMContentLoaded", function () {
     function renderVoices() {

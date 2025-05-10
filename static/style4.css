@@ -151,8 +151,8 @@ textarea {
     align-items: center;
     justify-content: space-between;
     background: #ffffffad;
-    padding: 0 10px;
-    height: 70px;
+    padding: 10px;
+    height: fit-content;
     border-radius: 10px;
     margin-bottom: 10px;
 }

@@ -12,6 +12,8 @@ from werkzeug.utils import secure_filename
 from Storymaker import storymaker_bp  # Import Story Maker Blueprint
 import re  # For email validation
 import uuid  # Import UUID for unique filenames
+from flask_mail import Mail, Message
+import secrets
 
 app = Flask(__name__)
 
@@ -26,6 +28,16 @@ EMAIL_REGEX = r"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
 
 # Dummy storage for emails (use a database in production)
 # subscribers = []
+
+# Flask-Mail Configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Use your email provider's SMTP server
+app.config['MAIL_PORT'] = 587  # SMTP port (587 for TLS, 465 for SSL)
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'devilboy6907@gmail.com'  # Replace with your email
+app.config['MAIL_PASSWORD'] = 'rruf unip kznq vnmz'  # Replace with your app password
+app.config['MAIL_DEFAULT_SENDER'] = 'your_email@gmail.com'
+
+mail = Mail(app)
 
 # MySQL Connection
 def get_db_connection():
@@ -74,22 +86,22 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 # Voice configurations
 VOICES = [
-    {'name': 'Eloise', 'details': 'Female, General', 'model': 'fr-FR-EloiseNeural','avatar': '/avatar/female-avatar1.avif'},
-    {'name': 'Henri', 'details': 'Male, General', 'model': 'fr-FR-HenriNeural','avatar': '/avatar/male-avatar1.avif'},
+    {'name': 'Brain', 'details': 'Male, Conversation, Copilot, Approachable, Casual, Sincere', 'model': 'en-US-BrianMultilingualNeural','avatar': '/avatar/male-avatar8.jpg'},
+    {'name': 'Emma', 'details': 'Female , Conversation, Copilot, Cheerful, Clear, Conversational', 'model': 'en-US-EmmaMultilingualNeural','avatar': '/avatar/female-avatar7.jpg'},
+    {'name': 'Eric', 'details': 'Male, News, Novel', 'model': 'en-US-EricNeural','avatar': '/avatar/male-avatar6.avif'},
+    {'name': 'Ana', 'details': 'Female, Cartoon, Conversation, Cute', 'model': 'en-US-AnaNeural','avatar': '/avatar/female-avatar5.avif'},
     {'name': 'Madhur', 'details': 'Male, General', 'model': 'hi-IN-MadhurNeural','avatar': '/avatar/male-avatar2.avif'},
     {'name': 'Swara', 'details': 'Female, General', 'model': 'hi-IN-SwaraNeural','avatar': '/avatar/female-avatar2.avif'},
-    {'name': 'Aarohi', 'details': 'Female, General', 'model': 'mr-IN-AarohiNeural','avatar': '/avatar/female-avatar3.avif'},
     {'name': 'Manohar', 'details': 'Male, General', 'model': 'mr-IN-ManoharNeural','avatar': '/avatar/male-avatar3.avif'},
-    {'name': 'Pallavi', 'details': 'Female, General', 'model': 'ta-IN-PallaviNeural','avatar': '/avatar/female-avatar4.jpg'},
+    {'name': 'Aarohi', 'details': 'Female, General', 'model': 'mr-IN-AarohiNeural','avatar': '/avatar/female-avatar3.avif'},
+    {'name': 'Henri', 'details': 'Male, General', 'model': 'fr-FR-HenriNeural','avatar': '/avatar/male-avatar1.avif'},
+    {'name': 'Eloise', 'details': 'Female, General', 'model': 'fr-FR-EloiseNeural','avatar': '/avatar/female-avatar1.avif'},
     {'name': 'Valluvar', 'details': 'Male, General', 'model': 'ta-IN-ValluvarNeural','avatar': '/avatar/male-avatar4.avif'},
-    {'name': 'Xiaoxiao', 'details': 'Female, News, Novel', 'model': 'zh-CN-XiaoxiaoNeural','avatar': '/avatar/female-avatar5.avif'},
-    {'name': 'Xiaoyi', 'details': 'Female, Cartoon, Novel', 'model': 'zh-CN-XiaoyiNeural','avatar': '/avatar/female-avatar6.avif'},
-    {'name': 'Yunjian', 'details': 'Male, Sports, Novel', 'model': 'zh-CN-YunjianNeural','avatar': '/avatar/male-avatar5.avif'},
-    {'name': 'Yunxi', 'details': 'Male, Novel', 'model': 'zh-CN-YunxiNeural','avatar': '/avatar/male-avatar6.avif'},
+    {'name': 'Pallavi', 'details': 'Female, General', 'model': 'ta-IN-PallaviNeural','avatar': '/avatar/female-avatar4.jpg'},
+    {'name': 'Alvaro', 'details': ' Male, General, Friendly, Positive','model': 'es-ES-AlvaroNeural','avatar': '/avatar/male-avatar5.avif'},
+    {'name': 'Elvira', 'details': 'Female, General, Friendly, Positive', 'model': 'es-ES-ElviraNeural','avatar': '/avatar/female-avatar6.avif'},
     {'name': 'Yunxia', 'details': 'Male, Cartoon, Novel', 'model': 'zh-CN-YunxiaNeural','avatar': '/avatar/male-avatar7.avif'},
-    {'name': 'YunyangNeural', 'details': 'Male, News', 'model': 'zh-CN-YunyangNeural','avatar': '/avatar/male-avatar8.jpg'},
-    {'name': 'liaoning-Xiaobei', 'details': 'Female, Dialect', 'model': 'zh-CN-liaoning-XiaobeiNeural','avatar': '/avatar/female-avatar7.jpg'},
-    {'name': 'shaanxi-Xiaoni', 'details': 'Female, Dialect', 'model': 'zh-CN-shaanxi-XiaoniNeural','avatar': '/avatar/female-avatar8.avif'}
+    {'name': 'YunyangNeural', 'details': 'Female, Cartoon, Novel,    Lively', 'model': 'zh-CN-XiaoyiNeural','avatar': '/avatar/female-avatar8.avif'}
 ]
 
 # Function to generate TTS asynchronously
@@ -307,6 +319,48 @@ def signup():
             return redirect(url_for('login'))
 
     return render_template('signup.html')
+
+@app.route('/forgot-password', methods=['GET', 'POST'])
+def forgot_password():
+    if request.method == 'POST':
+        email = request.form['email']
+        cursor.execute("SELECT id FROM users WHERE email = %s", (email,))
+        user = cursor.fetchone()
+
+        if user:
+            reset_token = secrets.token_urlsafe(32)  # Generate a secure token
+            cursor.execute("UPDATE users SET reset_token = %s WHERE email = %s", (reset_token, email))
+            conn.commit()
+
+            reset_url = url_for('reset_password', token=reset_token, _external=True)
+            msg = Message('Password Reset Request', recipients=[email])
+            msg.body = f'Click the link to reset your password: {reset_url}'
+            mail.send(msg)
+
+            flash('Password reset link sent to your email!', 'success')
+        else:
+            flash('Email not found!', 'danger')
+
+    return render_template('forgot_password.html')
+
+@app.route('/reset-password/<token>', methods=['GET', 'POST'])
+def reset_password(token):
+    if request.method == 'POST':
+        new_password = request.form['password']
+        hashed_password = bcrypt.hashpw(new_password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+        cursor.execute("SELECT id FROM users WHERE reset_token = %s", (token,))
+        user = cursor.fetchone()
+
+        if user:
+            cursor.execute("UPDATE users SET password = %s, reset_token = NULL WHERE reset_token = %s", (hashed_password, token))
+            conn.commit()
+            flash('Password reset successful! You can now log in.', 'success')
+            return redirect(url_for('login'))
+        else:
+            flash('Invalid or expired reset link!', 'danger')
+
+    return render_template('reset_password.html', token=token)
 
 @app.route('/logout')
 def logout():
