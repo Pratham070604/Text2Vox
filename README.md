@@ -126,7 +126,7 @@ Pull requests are welcome! For major changes, please open an issue first to disc
 
 **Prathmesh Parab**
 Final Year BSc IT, Kirti College
-GitHub: [@your-username]([https://github.com/your-username](https://github.com/Pratham070604))
+GitHub: [Pratham070604]((https://github.com/Pratham070604))
 
 ---
 
